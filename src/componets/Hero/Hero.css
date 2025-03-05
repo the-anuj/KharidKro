@@ -1,0 +1,29 @@
+#hero_page_button{
+    background: url('../Images/button.png');
+    width: 300px;
+    height: 100px;
+}
+#hero_body{
+    height: calc(100vh - 13vh);
+}
+@media (max-width:600px) {
+    #hero_body{
+        flex-direction: column;
+        height: 100vh;
+        align-items: center;
+        justify-content:stretch;
+    }
+    #hero_para{
+        margin-top:13vh;
+    }
+    #hero_img{
+        margin-top:70px;
+        margin-right: -200px;
+        height: 40vh;
+        width: 26vh;
+    }
+    #hero_page_button{
+        width: 50%;
+        height: 20%;
+    }
+}
