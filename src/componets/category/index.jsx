@@ -18,17 +18,12 @@ const index = () => {
           };
           fetchProducts();
     },[]);
-    console.log("products",product);
+    console.log("productsss",product);
     const card = product.slice(0,4).map(item => (
-        <> 
-          <div className='mt-7 mx-1' id='category-item'>
-              <div >
-                  <Link to='/Product'><img id='category-img' src={item.image} /></Link>
-                  <h5 className='text-center text-2xl'>{item.name}</h5>
-              </div>
-          </div>
-          
-        </>
+          <div className='mt-7 mx-1' id='category-item' key={item.id}>
+              <Link to='/Product'><img id='category-img' src={item.image} /></Link>
+              <h5 className='text-center text-2xl'>{item.name}</h5>
+          </div>  
     ));
 
   return (

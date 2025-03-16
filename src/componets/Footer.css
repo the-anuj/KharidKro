@@ -1,0 +1,40 @@
+#footer{
+    height: 40vh;
+    background-color: rgb(34, 32, 32);
+    color: white;
+    margin-bottom: 10px;
+}
+
+#footer .br{
+    height: 100%;
+    width: 1px;
+    background-color: white;
+}
+
+#footer ul{
+    padding-top: 5px;
+}
+
+#footer ul li{
+    color: rgb(92, 85, 85);
+    font-size: 0.8rem;
+    line-height: 30px;
+}
+
+@media (max-width:600px) {
+    #footer{
+        width: 100vw;
+        flex-direction: column;
+    }
+    #footer div ul{
+        display: none;
+    }
+
+    #footer div h2{
+        border: 1px solid gray;
+        padding: 4px;
+    }
+    .br{
+        display: none;
+    }
+}

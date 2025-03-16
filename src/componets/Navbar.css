@@ -27,6 +27,7 @@
         justify-content: space-between;
         align-items: center;
         position: fixed;
+        width: 100vw;
     }
     #navbar-Links{
         display: none;
@@ -40,6 +41,7 @@
         padding: 10;
         background: #1d293d;
         padding: 10px;
+        transition: 2s ease-in-out;
     }
     #navbar-Links{
         height: 40vh;
