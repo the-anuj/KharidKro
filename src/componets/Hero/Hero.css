@@ -5,6 +5,7 @@
 }
 #hero_body{
     height: calc(100vh - 13vh);
+    margin-top: 78px;
 }
 @media (max-width:600px) {
     #hero_body{

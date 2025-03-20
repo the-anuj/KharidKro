@@ -3,6 +3,7 @@ import '../Signup/Signup.css'
 import { Link } from 'react-router-dom';
 import { LuEyeClosed } from "react-icons/lu";
 import { LuEye } from "react-icons/lu";
+import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
   
@@ -11,6 +12,7 @@ const Signup = () => {
     email: '',
     password: '',
   });
+  const navigate = useNavigate();
   const[showPassword, setShowPassword]=useState(true);
   
   const [errorMessage, setErrorMessage] = useState('');
@@ -47,6 +49,11 @@ const Signup = () => {
         body: JSON.stringify(formData)
       });
       console.log(response)
+      if (response.ok) {
+        navigate('/signin'); 
+      } else {
+        setErrorMessage('Sign-in failed');
+      }
     } catch (error) {
       console.log("resposne error", error)
     }

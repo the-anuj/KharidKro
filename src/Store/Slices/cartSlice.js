@@ -16,13 +16,15 @@ const initialState = {
             const itemIndex = state.cartItems.findIndex((item) => item.id === action.payload.id);
             if (itemIndex >= 0) {
                 state.cartItems[itemIndex].quantity += 1;
+                state.totalPrice += (action.payload.price);
                 return
             }else{
                 state.cartItems.push({...action.payload,quantity:1})
             }
             
             state.cartQuantity += 1;
-            state.totalPrice += action.payload.price;
+            state.totalPrice += (action.payload.price);
+            
         },
         removeFromCart: (state, action) => {
             const filteredCart = state.cartItems.filter(
@@ -40,10 +42,9 @@ const initialState = {
             const itemIndex = state.cartItems.findIndex(
               (item) => item.id === action.payload.id
             );
-      
+            
             if(itemIndex >= 0) {
               state.cartItems[itemIndex].quantity += 1;
-              state.cartQuantity += 1;
               state.totalPrice += state.cartItems[itemIndex].price;
             }
           },
@@ -54,7 +55,6 @@ const initialState = {
       
             if (state.cartItems[itemIndex].quantity > 1) {
               state.cartItems[itemIndex].quantity -= 1;
-              state.cartQuantity -= 1;
               state.totalPrice -= state.cartItems[itemIndex].price;
             } else {
               cartSlice.caseReducers.removeFromCart(state, action);

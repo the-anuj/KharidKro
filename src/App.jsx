@@ -8,6 +8,7 @@ import Service from './pages/NavPages/Service'
 import Signup from './pages/NavPages/Signup/Signup'
 import Signin from './pages/NavPages/SignIn/Signin'
 import Cart from './pages/NavPages/Cart'
+import Dashboard from './pages/NavPages/Dashboard/Dashboard'
 
 function App() {
   
@@ -39,7 +40,11 @@ function App() {
     {
       path: '/cart',
       element:<><Navbar/><Cart/></>
-    }
+    },
+    {
+      path: '/dashboard',
+      element:<><Navbar/><Dashboard/></> 
+       }
   ])
 
   return (

@@ -1,3 +1,7 @@
+.about_div{
+    margin-top: 78px;
+}
+
 @media (max-width:600px){
     .about{
         height: 300px;

@@ -38,7 +38,7 @@ const Product = () => {
       </div>
   ));
   return (
-    <div className='bg-slate-300 flex flex-col justify-center items-center p-5 product_loading_card_div'>
+    <div className='bg-slate-300 flex flex-col justify-center items-center p-5 product_loading_card_div mt-10'>
       {loading && <p className="text-blue-500">
         <div className="flex justify-center items-center loading_div">
           <div className="animate-spin rounded-full h-10 w-10 border-t-4 border-blue-500"></div>

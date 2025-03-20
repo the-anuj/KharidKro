@@ -6,7 +6,7 @@ import cartEmpty from '../../assets/cartEmpty.avif'
 import { removeFromCart, increaseItemQuantity,decreaseItemQuantity} from '../../Store/Slices/cartSlice'
 
 const Cart = () => {
-  const { cartItems,quantity,totalPrice} = useSelector(
+  const { cartItems,totalPrice} = useSelector(
     (state) => state.cart
   );
   const dispatch = useDispatch();
@@ -25,14 +25,14 @@ const Cart = () => {
           <input className="text-sm h-8 px-4 w-12 appearance-none  border rounded-md focus:outline-none focus:ring-2 focus:ring-gray-200 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-moz-number-spin-box]:hidden" type="number" value={item.quantity}/> 
           <button className="ml-3" type="button" onClick={()=>dispatch(increaseItemQuantity(item))}>+</button>
         </label>
-        <h6 className="my-auto ">{item.price}</h6>
+        <h6 className="my-auto ">{item.price * item.quantity}</h6>
         <button className="text-2xl text-red-500 cursor-pointer" onClick={() => dispatch(removeFromCart(item))}><RiDeleteBin5Line /></button>
       </div>
     </div>
   ))
 
   return (
-    <div className="flex flex-col justify-start items-center">
+    <div className="flex flex-row justify-between mt-30 px-60 mx-40 items-center gap-4">
       {cartItem.length === 0 ? (
           <img className="size-96 " src={cartEmpty} alt="" />
         ):<div className="flex  flex-col mt-10 border border-black p-10 rounded-md -ml-96">
@@ -47,10 +47,16 @@ const Cart = () => {
           <div className="flex flex-col gap-5">
           {cartItem}
         </div>
-        <div>
-          
-        </div>
+        
       </div>}
+      
+      <div className=" border rounded-md p-20  flex flex-col gap-40">
+          <h2 className="-ml-11">Summary</h2>
+          <div>
+            <div className="w-40">Total Price <span>{totalPrice}</span></div>
+          </div>
+      </div>
+      
     </div>
 
   );
