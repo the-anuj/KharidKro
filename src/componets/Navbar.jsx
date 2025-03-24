@@ -13,7 +13,7 @@ import { useState } from 'react';
 
 
 const Navbar = () => {
-  const {cartQuantity}=useSelector(state=>state.cart)
+  // const {cartQuantity}=useSelector(state=>state.cart)
 
   const [navLinks, setNavLinks] = useState(false);
   const renderNavLinks = ()=>{
@@ -43,11 +43,11 @@ const Navbar = () => {
                 ? "text-white font-bold border-b-2 border-b-yellow-300"
                 : "text-gray-300"
             }>Products</NavLink>
-            <NavLink to="/Services" className={({ isActive }) =>
+            <NavLink to="/categories" className={({ isActive }) =>
               isActive
                 ? "text-white font-bold border-b-2 border-b-yellow-300"
                 : "text-gray-300"
-            }>Services</NavLink>
+            }>Categories</NavLink>
         </ul>
         </div>
         <div id='nav-search' className='flex flex-row'>
@@ -55,7 +55,7 @@ const Navbar = () => {
             <input className='p-1' type="text" placeholder='Search Product' />
         </div>
         <div id='nav-cart-signup' className='flex flex-row justify-between items-center gap-5'>
-          <NavLink id='nav-cart' className='text-2xl font-bold ml-5 cursor-pointer flex flex-row' to="/cart"><BsCart3 /><span className='text-xs font-light'>{cartQuantity}</span></NavLink>
+          <NavLink id='nav-cart' className='text-2xl font-bold ml-5 cursor-pointer flex flex-row' to="/cart"><BsCart3 /><span className='text-xs font-light'></span></NavLink>
           <Link id='nav-signup' className='mx-4 cursor-pointer' to="/Signup"><GoSignIn /></Link>
           <Link id='nav-bar' onClick={renderNavLinks}><FaBarsStaggered /></Link>
         </div>

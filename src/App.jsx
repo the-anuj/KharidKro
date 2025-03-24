@@ -4,11 +4,15 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Home from './pages/NavPages/Home'
 import About from './pages/NavPages/About'
 import Product from './pages/NavPages/Product'
-import Service from './pages/NavPages/Service'
+import Categories from './pages/NavPages/Categories'
 import Signup from './pages/NavPages/Signup/Signup'
 import Signin from './pages/NavPages/SignIn/Signin'
-import Cart from './pages/NavPages/Cart'
-import Dashboard from './pages/NavPages/Dashboard/Dashboard'
+// import Cart from './pages/NavPages/Cart'
+import Dashboard from './Admin/Dashboard.jsx'
+
+import AllProduct from './Admin/AllProducts'
+import AddProduct from './Admin/AddProduct'
+import UpdateAdminProduct from './Admin/EditProduct'
 
 function App() {
   
@@ -26,8 +30,8 @@ function App() {
       element: <><Navbar/><Product /></>
     },
     {
-      path: '/Services',
-      element: <><Navbar/><Service /></>
+      path: '/categories',
+      element: <><Navbar/><Categories /></>
     },
     {
       path: '/signup',
@@ -37,14 +41,28 @@ function App() {
       path: '/signin',
       element:<><Navbar/><Signin/></>
     },
+    // {
+    //   path: '/cart',
+    //   element:<><Navbar/><Cart/></>
+    // },
+
     {
-      path: '/cart',
-      element:<><Navbar/><Cart/></>
+      path: '/admin/dashboard',
+      element:<><Dashboard/></> 
     },
     {
-      path: '/dashboard',
-      element:<><Navbar/><Dashboard/></> 
-       }
+      path: '/admin/addproduct',
+      element:<><AddProduct/></> 
+    },
+    {
+      path: '/admin/getproduct',
+      element:<><AllProduct/></> 
+    },
+    {
+      path:'/admin/updatedadminproduct/:productId',
+      element:<><UpdateAdminProduct/></>
+    }
+
   ])
 
   return (

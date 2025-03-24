@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getProducts } from "../Thunk/productThunk";
+import { getProducts,getProductsCategory } from "../../Thunk/UserThunk/productThunk";
 
 const initialState = {
   products: [],
@@ -25,6 +25,18 @@ const productSlice = createSlice({
         .addCase(getProducts.rejected, (state, action) => {
             state.loading = false;
             state.error = action.payload;
+        })
+        .addCase(getProductsCategory.pending,(state)=>{
+          state.loading = true;
+          state.error = null;
+        })
+        .addCase(getProductsCategory.fulfilled,(state,action)=>{
+          state.loading = false;
+          state.products = action.payload;
+        })
+        .addCase(getProductsCategory.rejected,(state,action)=>{
+          state.loading = false;
+          state.error = action.payload;
         })
   }
 })
