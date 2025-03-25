@@ -33,10 +33,12 @@ const Signin = () => {
         },
         body: JSON.stringify(formData),
       });
-      console.log(response);
-      
+      // console.log(response);  
+      const data = await response.json();
+      // console.log('Response data:', data);
       if (response.ok) {
-        localStorage.setItem('token', response.data.token);
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('user', JSON.stringify(data.user));
         navigate('/'); 
       } else {
         setErrorMessage('Sign-in failed');
@@ -46,6 +48,7 @@ const Signin = () => {
       setErrorMessage('An error occurred. Please try again.');
     }
   };
+
 
   return (
     <div className="signup-form mt-40">

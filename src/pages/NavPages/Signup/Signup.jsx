@@ -4,9 +4,10 @@ import { Link } from 'react-router-dom';
 import { LuEyeClosed } from "react-icons/lu";
 import { LuEye } from "react-icons/lu";
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
 
 const Signup = () => {
-  
+  const notify = () => toast("User Created!");
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -35,11 +36,8 @@ const Signup = () => {
     } else {
       setFormData({ name: '', email: '', password: '' })
     }
-    // Clear error message if validation passes
     setErrorMessage('');
 
-    // You can handle the signup logic here (e.g., send data to an API)
-    console.log('Form submitted with data:', formData);
     try {
       let response = await fetch('http://localhost:5000/signup', {
         method: "POST",
@@ -48,9 +46,11 @@ const Signup = () => {
         },
         body: JSON.stringify(formData)
       });
-      console.log(response)
       if (response.ok) {
-        navigate('/signin'); 
+        notify();
+        setTimeout(() => {
+          navigate('/signin'); 
+        }, 2000);
       } else {
         setErrorMessage('Sign-in failed');
       }
@@ -103,7 +103,7 @@ const Signup = () => {
           </div>
         </div>
 
-        <button id='signup_page_button' className='bg-slate-900' type="submit">Sign Up</button>
+        <button id='signup_page_button' className='bg-slate-900' type="submit">Sign Up <ToastContainer /></button>
       </form>
       <Link to="/signin">Already have Account? SignIn</Link>
     </div>

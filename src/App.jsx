@@ -13,6 +13,7 @@ import Dashboard from './Admin/Dashboard.jsx'
 import AllProduct from './Admin/AllProducts'
 import AddProduct from './Admin/AddProduct'
 import UpdateAdminProduct from './Admin/EditProduct'
+import Profile from './componets/Profile/Profile.jsx'
 
 function App() {
   
@@ -40,6 +41,10 @@ function App() {
     {
       path: '/signin',
       element:<><Navbar/><Signin/></>
+    },
+    {
+      path: '/profile',
+      element:<><Navbar/><Profile/></>
     },
     // {
     //   path: '/cart',

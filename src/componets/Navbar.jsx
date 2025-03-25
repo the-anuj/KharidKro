@@ -56,7 +56,7 @@ const Navbar = () => {
         </div>
         <div id='nav-cart-signup' className='flex flex-row justify-between items-center gap-5'>
           <NavLink id='nav-cart' className='text-2xl font-bold ml-5 cursor-pointer flex flex-row' to="/cart"><BsCart3 /><span className='text-xs font-light'></span></NavLink>
-          <Link id='nav-signup' className='mx-4 cursor-pointer' to="/Signup"><GoSignIn /></Link>
+          <Link id='nav-signup' className='mx-4 cursor-pointer' to={localStorage.getItem('token')?'/profile':'/signup'}><GoSignIn /></Link>
           <Link id='nav-bar' onClick={renderNavLinks}><FaBarsStaggered /></Link>
         </div>
     </div>
