@@ -7,7 +7,7 @@ import Product from './pages/NavPages/Product'
 import Categories from './pages/NavPages/Categories'
 import Signup from './pages/NavPages/Signup/Signup'
 import Signin from './pages/NavPages/SignIn/Signin'
-// import Cart from './pages/NavPages/Cart'
+import Cart from './pages/NavPages/Cart'
 import Dashboard from './Admin/Dashboard.jsx'
 
 import AllProduct from './Admin/AllProducts'
@@ -46,10 +46,10 @@ function App() {
       path: '/profile',
       element:<><Navbar/><Profile/></>
     },
-    // {
-    //   path: '/cart',
-    //   element:<><Navbar/><Cart/></>
-    // },
+    {
+      path: '/cart',
+      element:<><Navbar/><Cart/></>
+    },
 
     {
       path: '/admin/dashboard',

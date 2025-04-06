@@ -40,6 +40,7 @@ const Signin = () => {
         localStorage.setItem('token', data.token);
         localStorage.setItem('user', JSON.stringify(data.user));
         navigate('/'); 
+        
       } else {
         setErrorMessage('Sign-in failed');
       }

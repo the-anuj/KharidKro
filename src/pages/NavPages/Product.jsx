@@ -1,29 +1,36 @@
 import { React, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import { addCart } from '../../Store/Slices/cartSlice'
+import { addToCart } from '../../Store/Thunk/UserThunk/cartThunk'
 import { getProducts } from '../../Store/Thunk/UserThunk/productThunk';
+import {getCurrentUser} from '../../utils/auth'
 import './Product.css'
 
 const Product = () => {
   const dispatch = useDispatch();
   const { products } = useSelector(state => state.products)
   const { loading, error } = useSelector(state => state.products)
-  
-  // const allData = products.data.products;
-  // const convertedData = {...allData};
-  // console.log(convertedData);
-  
 
-  
+  const currentUser = getCurrentUser();
+  const userId = currentUser?.id;
+ 
+
   useEffect(() => {
     dispatch(getProducts())
-
   }, []);
 
 
-  // const handleAddToCart = (product) => {
-  //   dispatch(addCart(product))
-  // }
+  const handleAddToCart = (product) => {
+    if (!userId) {
+      alert('Please login to add items to cart');
+      return;
+    }
+    dispatch(addToCart({
+      userId,
+      productId: product._id,
+      quantity: 1
+    }));
+  };
+  
   const card = products.map(product => (
       <div className='bg-white mb-30 w-60 h-70 rounded-2xl card_item' key={product._id}>
         <div className='p-6 border-white aspect-square card_img_div'>
@@ -33,7 +40,7 @@ const Product = () => {
         <h5 className="text-sm -mt-10 ml-5 card_title">{(product.name.slice(0, 20))}{product.name.length >= 20 && "..."}</h5>
         <h3 className="text-sm -mt-10 ml-5 card_price">${product.price}</h3>
 
-        <button className=' w-full bg-slate-900 h-10 rounded-b-2xl cursor-pointer text-white mt-10 addtocartButton' >Add to Cart</button>
+        <button className=' w-full bg-slate-900 h-10 rounded-b-2xl cursor-pointer text-white mt-10 addtocartButton' onClick={()=>handleAddToCart(product)} >Add to Cart</button>
 
       </div>
   ));

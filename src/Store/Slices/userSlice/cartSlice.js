@@ -1,68 +1,64 @@
-// import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
+import {addToCart, getCart } from "../../Thunk/UserThunk/cartThunk";
 
-// const initialState = {
-//     cartItems : [],
-//     cartQuantity:0,
-//     cartLoading:false,
-//     totalPrice:0,
-//     error:null
-// }
+const initialState = {
+    cart : [],
+    cartLoading:false,
+    error:null
+}
 
-//  const cartSlice = createSlice({
-//     name:'cart',
-//     initialState,
-//     reducers:{
-//         addCart:(state,action)=>{
-//             const itemIndex = state.cartItems.findIndex((item) => item.id === action.payload.id);
-//             if (itemIndex >= 0) {
-//                 state.cartItems[itemIndex].quantity += 1;
-//                 state.totalPrice += (action.payload.price);
-//                 return
-//             }else{
-//                 state.cartItems.push({...action.payload,quantity:1})
-//             }
-            
-//             state.cartQuantity += 1;
-//             state.totalPrice += (action.payload.price);
-            
-//         },
-//         removeFromCart: (state, action) => {
-//             const filteredCart = state.cartItems.filter(
-//               (item) => item.id !== action.payload.id
-//             );
-//             const itemToRemove = state.cartItems.find(
-//               (item) => item.id === action.payload.id
-//             );
-      
-//             state.cartItems = filteredCart;
-//             state.cartQuantity -= itemToRemove.quantity;
-//             state.totalPrice -= itemToRemove.price * itemToRemove.quantity;
-//           },
-//           increaseItemQuantity: (state, action) => {
-//             const itemIndex = state.cartItems.findIndex(
-//               (item) => item.id === action.payload.id
-//             );
-            
-//             if(itemIndex >= 0) {
-//               state.cartItems[itemIndex].quantity += 1;
-//               state.totalPrice += state.cartItems[itemIndex].price;
-//             }
-//           },
-//           decreaseItemQuantity: (state, action) => {
-//             const itemIndex = state.cartItems.findIndex(
-//               (item) => item.id === action.payload.id
-//             );
-      
-//             if (state.cartItems[itemIndex].quantity > 1) {
-//               state.cartItems[itemIndex].quantity -= 1;
-//               state.totalPrice -= state.cartItems[itemIndex].price;
-//             } else {
-//               cartSlice.caseReducers.removeFromCart(state, action);
-//             }
-//           }
+ const cartSlice = createSlice({
+    name:'cart',
+    initialState,
+    reducers: {
+      clearCart: (state) => {
+        state.cart = null;
+      }
+    },
+    extraReducers: (builder) => {
+      builder
+        // Create Cart
+        // .addCase(createCart.pending, (state) => {
+        //   state.loading = true;
+        //   state.error = null;
+        // })
+        // .addCase(createCart.fulfilled, (state, action) => {
+        //   state.loading = false;
+        //   state.cart = action.payload;
+        // })
+        // .addCase(createCart.rejected, (state, action) => {
+        //   state.loading = false;
+        //   state.error = action.payload?.message || 'Failed to create cart';
+        // })
+        .addCase(getCart.pending, (state) => {
+          state.loading = true;
+          state.error = null;
+        })
+        .addCase(getCart.fulfilled, (state, action) => {
+          state.loading = false;
+          state.cart = action.payload;
+        })
+        .addCase(getCart.rejected, (state, action) => {
+          state.loading = false;
+          state.error = action.payload?.message || 'Failed to create cart';
+        })
+        
+        // Add to Cart
+        .addCase(addToCart.pending, (state) => {
+          state.loading = true;
+          state.error = null;
+        })
+        .addCase(addToCart.fulfilled, (state, action) => {
+          state.loading = false;
+          state.cart = action.payload;
+        })
+        .addCase(addToCart.rejected, (state, action) => {
+          state.loading = false;
+          state.error = action.payload?.message || 'Failed to add to cart';
+        });
 
-//     }
-// })
+    }
+})
 
-// export const {addCart,removeFromCart,increaseItemQuantity,decreaseItemQuantity} = cartSlice.actions;
-// export default cartSlice.reducer
+export const { clearCart } = cartSlice.actions;
+export default cartSlice.reducer
