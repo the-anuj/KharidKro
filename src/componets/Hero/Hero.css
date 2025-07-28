@@ -1,30 +1,87 @@
-#hero_page_button{
+.hero-bg {
+    background: linear-gradient(135deg, #fffbe6 0%, #64bbee 100%); /* Soft yellow gradient */
+    min-height: calc(100vh - 8vh);
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+#hero_body {
+    height: calc(100vh - 8vh);
+    margin-top: 64px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100vw;
+    padding: 0 2rem;
+}
+#hero_title {
+    margin-left: 3.5rem;
+    font-size: 2.5rem;
+    color: #2d3748;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+#hero_para {
+    margin-left: 3.5rem;
+    font-size: 0.95rem;
+    color: #4b2e39;
+    max-width: 36rem;
+    line-height: 1.5;
+    font-weight: 500;
+}
+#hero_page_button {
     background: url('../Images/button.png');
-    width: 300px;
-    height: 100px;
+    width: 220px;
+    height: 70px;
+    color: #fff;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 12px;
+    margin-left: 3.5rem;
+    margin-top: 2rem;
+    box-shadow: 0 4px 16px rgba(160, 113, 113, 0.12);
+    transition: transform 0.2s, box-shadow 0.2s;
 }
-#hero_body{
-    height: calc(100vh - 13vh);
-    margin-top: 78px;
+#hero_page_button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.18);
 }
-@media (max-width:600px) {
-    #hero_body{
+#hero_img {
+    margin-left: 4rem;
+    border-radius: 50%; /* Make it circular */
+    box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+    width: 420px;
+    height: 420px; /* Make it square for perfect circle */
+    max-width: 35vw;
+    object-fit: cover; /* Ensure image covers the circular area properly */
+    border: 8px solid #f8f9fa; /* Light border */
+}
+@media (max-width: 900px) {
+    #hero_body {
         flex-direction: column;
-        height: 100vh;
+        height: auto;
         align-items: center;
-        justify-content:stretch;
+        justify-content: center;
+        padding: 2rem 0;
     }
-    #hero_para{
-        margin-top:13vh;
+    #hero_img {
+        margin: 2rem 0 0 0;
+        width: 80vw;
+        max-width: 90vw;
     }
-    #hero_img{
-        margin-top:70px;
-        margin-right: -250px;
-        height: 57vh;
-        width: 58vw;
+    #hero_para {
+        margin-top: 2rem;
+        margin-left: 0;
+        font-size: 1.2rem;
+        text-align: center;
     }
-    #hero_page_button{
-        width: 50%;
-        height: 20%;
+    #hero_page_button {
+        margin-left: 0;
+        width: 70vw;
+        height: 50px;
+        font-size: 1rem;
     }
 }

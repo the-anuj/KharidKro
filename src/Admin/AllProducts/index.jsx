@@ -36,8 +36,8 @@ const ProductList = () => {
         {adminProducts.map((product) => (
           <li key={product._id} className='flex flex-row justify-between px-5 py-3 bg-slate-100 text-slate-800'>
             <img src={product.image} alt="" className='size-10'/>
-            <h2 className='px-20 w-40 text-sm'>{product.name}</h2>
-            <p className='px-9 w-10'>Rs.{product.price}</p>
+            <h2 className='px-20 max-w-40 text-sm'>{(product.name.length > 10) ? product.name.slice(0, 10) + '...' : product.name}</h2>
+            <p className='px-9 max-w-20'>Rs.{product.price}</p>
             <h2 className='px-5 w-5'>{product.category}</h2>
             {/* <h2 className='px-5 w-5'>{product.quantity}</h2> */}
             <Link className='bg-yellow-300 px-3 py-1  rounded-md' to={`/admin/updatedadminproduct/${product._id}`}>Edit</Link>

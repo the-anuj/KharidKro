@@ -1,6 +1,6 @@
 import React from 'react'
 import './Navbar.css'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { GoSignIn } from "react-icons/go";
 import { FaSearch } from "react-icons/fa";
 import { BsCart3 } from "react-icons/bs";
@@ -9,7 +9,7 @@ import { RxCross2 } from "react-icons/rx";
 import Logo from '../componets/Images/logo.png'
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
-
+import { FaMoon, FaSun } from 'react-icons/fa';
 
 
 const Navbar = () => {
@@ -20,8 +20,18 @@ const Navbar = () => {
     setNavLinks(!navLinks);
   }
 
+  // Removed theme state and effect
+  const navigate = useNavigate();
+  const [search, setSearch] = useState("");
+
+  const handleSearchKeyDown = (e) => {
+    if (e.key === 'Enter' && search.trim() !== "") {
+      navigate(`/category/${encodeURIComponent(search.trim())}`);
+    }
+  };
+
   return (
-    <div id='navbar' className='flex flex-row justify-between p-5 bg-slate-800 text-white'>
+    <div id='navbar' className='flex flex-row justify-between p-5' style={{ background: 'black', color: 'white' }}>
       <div className='flex flex-row mx-4'>
         <img className='size-10 mr-4' src={Logo} alt="logo" />
       </div>
@@ -52,7 +62,17 @@ const Navbar = () => {
         </div>
         <div id='nav-search' className='flex flex-row'>
             <span className='text-lg mt-2 mr-2'><FaSearch/></span>
-            <input className='p-1' type="text" placeholder='Search Product' />
+            <input className='p-1' type="text" placeholder='Search Product' value={search} onChange={e => setSearch(e.target.value)} onKeyDown={handleSearchKeyDown} />
+            {search && (
+              <button
+                type="button"
+                className="ml-2 text-gray-400 hover:text-gray-600 focus:outline-none"
+                onClick={() => setSearch("")}
+                aria-label="Clear search"
+              >
+                <RxCross2 />
+              </button>
+            )}
         </div>
         <div id='nav-cart-signup' className='flex flex-row justify-between items-center gap-5'>
           <NavLink id='nav-cart' className='text-2xl font-bold ml-5 cursor-pointer flex flex-row' to="/cart"><BsCart3 /><span className='text-xs font-light'></span></NavLink>

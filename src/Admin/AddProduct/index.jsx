@@ -56,15 +56,21 @@ const index = () => {
                         onChange={handleInputChange}
                         className=''
                     />
-                    <input
-                        type="text"
+                    <select
                         name="category"
-                        placeholder="Product Category"
                         value={formData.category}
                         required
                         onChange={handleInputChange}
-                        className=''
-                    />
+                        className='p-2 rounded border border-gray-300'
+                    >
+                        <option value="" disabled>Select Category</option>
+                        <option value="Shirt">Shirt</option>
+                        <option value="T-Shirt">T-Shirt</option>
+                        <option value="Jeans">Jeans</option>
+                        <option value="Pants">Pants</option>
+                        <option value="Watch">Watch</option>
+                        <option value="Shoes">Shoes</option>
+                    </select>
                     <input
                         type="Number"
                         name="quantity"
@@ -90,7 +96,7 @@ const index = () => {
                         onChange={handleInputChange}
                         className=''
                     />
-                    <button type="submit" className=''>Submit
+                    <button type="submit" className='cursor-pointer'>Submit
                     </button>
                 </form>
             </div>

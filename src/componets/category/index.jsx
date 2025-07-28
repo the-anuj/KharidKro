@@ -16,10 +16,10 @@ const index = () => {
   if (error) return <p>Error: {error}</p>;
   
 
-    const card = products.slice(0,4).map(item => (
-          <div className='mt-7 mx-1' id='category-item' key={item.id}>
-              <Link to='/Product'><img id='category-img' src={item.image} className='size-80' /></Link>
-              <h5 className='text-center text-2xl'>{item.category}</h5>
+    const card = products.map(item => (
+          <div className='mt-4 mx-1' id='category-item' key={item.id}>
+              <Link to={`/category/${encodeURIComponent(item.category)}`}><img id='category-img' src={item.image} className='size-40' /></Link>
+              <h5 className='text-center text-lg'>{item.category}</h5>
           </div>  
     ));
 

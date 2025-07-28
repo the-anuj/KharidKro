@@ -1,40 +1,97 @@
-#footer{
-    height: 40vh;
-    background-color: rgb(34, 32, 32);
-    color: white;
-    margin-bottom: 10px;
+#footer {
+    min-height: 30vh;
+    background-color: #222028;
+    color: #fff;
+    margin-bottom: 0;
+    box-shadow: 0 -2px 16px rgba(0,0,0,0.08);
+    padding: 2rem 2.5rem;
+    gap: 2rem;
 }
-
-#footer .br{
+.footer-section {
+    flex: 1 1 0;
+    min-width: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.footer-brand {
+    font-size: 2rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+    color: #ffd700;
+}
+.footer-desc {
+    font-size: 1rem;
+    color: #e0e0e0;
+    margin-bottom: 1rem;
+    max-width: 220px;
+}
+.footer-socials {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+.footer-socials a {
+    color: #ffd700;
+    font-size: 1.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background: #292929;
+    transition: background 0.2s, color 0.2s;
+}
+.footer-socials a:hover {
+    color: #fff;
+    background: #ffd700;
+}
+.footer-section h2 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: #ffd700;
+}
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.footer-section ul li {
+    color: #bbb;
+    font-size: 0.95rem;
+    line-height: 2;
+    margin-bottom: 0.2rem;
+}
+.footer-payments {
+    margin-top: 1rem;
+    font-size: 2rem;
+    color: #ffd700;
+    display: flex;
+    gap: 0.7rem;
+}
+#footer .br {
     height: 100%;
     width: 1px;
-    background-color: white;
+    background-color: #444;
+    margin: 0 1rem;
 }
-
-#footer ul{
-    padding-top: 5px;
-}
-
-#footer ul li{
-    color: rgb(92, 85, 85);
-    font-size: 0.8rem;
-    line-height: 30px;
-}
-
-@media (max-width:600px) {
-    #footer{
-        width: 100vw;
+@media (max-width: 900px) {
+    #footer {
         flex-direction: column;
+        align-items: flex-start;
+        padding: 2rem 1rem;
+        gap: 1.5rem;
     }
-    #footer div ul{
-        display: none;
+    .footer-section {
+        min-width: 100px;
+        margin-bottom: 1.5rem;
     }
-
-    #footer div h2{
-        border: 1px solid gray;
-        padding: 4px;
-    }
-    .br{
+    #footer .br {
         display: none;
     }
 }

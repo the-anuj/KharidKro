@@ -15,3 +15,17 @@
     background-color: rgb(207, 207, 9);
     color: white;
 }
+.add_product_form select {
+    background: #fff;
+    color: #888;
+    border: 1px solid blue;
+    border-radius: 4px;
+    padding: 0.5rem 0.75rem;
+    font-size: 1rem;
+    outline: none;
+    transition: border 0.2s;
+    margin-bottom: 0.5rem;
+}
+.add_product_form select:focus, .add_product_form select:hover {
+    border: 1.5px solid blue;
+}

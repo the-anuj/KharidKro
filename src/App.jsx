@@ -14,6 +14,7 @@ import AllProduct from './Admin/AllProducts'
 import AddProduct from './Admin/AddProduct'
 import UpdateAdminProduct from './Admin/EditProduct'
 import Profile from './componets/Profile/Profile.jsx'
+import CategoryProducts from './pages/NavPages/CategoryProducts';
 
 function App() {
   
@@ -33,6 +34,10 @@ function App() {
     {
       path: '/categories',
       element: <><Navbar/><Categories /></>
+    },
+    {
+      path: '/category/:category',
+      element: <><Navbar/><CategoryProducts /></>
     },
     {
       path: '/signup',

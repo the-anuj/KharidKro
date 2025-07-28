@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import {addToCart, getCart } from "../../Thunk/UserThunk/cartThunk";
+import { addToCart, getCart, increaseQuantity, decreaseQuantity, removeFromCart } from "../../Thunk/UserThunk/cartThunk";
 
 const initialState = {
     cart : [],
-    cartLoading:false,
-    error:null
+    loading: false,
+    error: null
 }
 
  const cartSlice = createSlice({
@@ -12,24 +12,11 @@ const initialState = {
     initialState,
     reducers: {
       clearCart: (state) => {
-        state.cart = null;
+        state.cart = [];
       }
     },
     extraReducers: (builder) => {
       builder
-        // Create Cart
-        // .addCase(createCart.pending, (state) => {
-        //   state.loading = true;
-        //   state.error = null;
-        // })
-        // .addCase(createCart.fulfilled, (state, action) => {
-        //   state.loading = false;
-        //   state.cart = action.payload;
-        // })
-        // .addCase(createCart.rejected, (state, action) => {
-        //   state.loading = false;
-        //   state.error = action.payload?.message || 'Failed to create cart';
-        // })
         .addCase(getCart.pending, (state) => {
           state.loading = true;
           state.error = null;
@@ -40,7 +27,7 @@ const initialState = {
         })
         .addCase(getCart.rejected, (state, action) => {
           state.loading = false;
-          state.error = action.payload?.message || 'Failed to create cart';
+          state.error = action.payload?.message || 'Failed to get cart';
         })
         
         // Add to Cart
@@ -55,6 +42,48 @@ const initialState = {
         .addCase(addToCart.rejected, (state, action) => {
           state.loading = false;
           state.error = action.payload?.message || 'Failed to add to cart';
+        })
+
+        // Increase Quantity
+        .addCase(increaseQuantity.pending, (state) => {
+          state.loading = true;
+          state.error = null;
+        })
+        .addCase(increaseQuantity.fulfilled, (state, action) => {
+          state.loading = false;
+          state.cart = action.payload;
+        })
+        .addCase(increaseQuantity.rejected, (state, action) => {
+          state.loading = false;
+          state.error = action.payload?.message || 'Failed to increase quantity';
+        })
+
+        // Decrease Quantity
+        .addCase(decreaseQuantity.pending, (state) => {
+          state.loading = true;
+          state.error = null;
+        })
+        .addCase(decreaseQuantity.fulfilled, (state, action) => {
+          state.loading = false;
+          state.cart = action.payload;
+        })
+        .addCase(decreaseQuantity.rejected, (state, action) => {
+          state.loading = false;
+          state.error = action.payload?.message || 'Failed to decrease quantity';
+        })
+
+        // Remove from Cart
+        .addCase(removeFromCart.pending, (state) => {
+          state.loading = true;
+          state.error = null;
+        })
+        .addCase(removeFromCart.fulfilled, (state, action) => {
+          state.loading = false;
+          state.cart = action.payload;
+        })
+        .addCase(removeFromCart.rejected, (state, action) => {
+          state.loading = false;
+          state.error = action.payload?.message || 'Failed to remove from cart';
         });
 
     }

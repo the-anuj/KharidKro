@@ -1,5 +1,7 @@
 #category-img{
-    size: 30px;
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
     border-radius: 2px ;
 }
 #category-img:hover {
