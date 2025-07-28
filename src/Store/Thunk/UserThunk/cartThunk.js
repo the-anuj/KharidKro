@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { getToken } from '../../../utils/auth';
 
-const BASE_URL = 'http://localhost:5000';
+const BASE_URL = 'https://kharid-karo-backend.vercel.app/';
 
 export const getCart = createAsyncThunk(
   'cart/getCart',

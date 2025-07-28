@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 // import product from '../../../../../Backend/models/product';
 
-const BASE_URL = "http://localhost:5000/admin";
+const BASE_URL = "https://kharid-karo-backend.vercel.app/";
 
 export const getAdminProducts = createAsyncThunk('admin/getproducts', async (_, { rejectWithValue }) => {
   try {

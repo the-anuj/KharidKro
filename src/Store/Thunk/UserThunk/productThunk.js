@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 
-const BASE_URL = "http://localhost:5000/user"
+const BASE_URL = "https://kharid-karo-backend.vercel.app/"
 // Get All Products
 export const getProducts = createAsyncThunk('user/getproducts', async (params, { rejectWithValue }) => {  
 
