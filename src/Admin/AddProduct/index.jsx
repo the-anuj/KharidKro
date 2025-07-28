@@ -23,7 +23,7 @@ const index = () => {
         try {
             
                 // Add new product
-                await axios.post('http://localhost:5000/admin/addproduct', formData);
+                await axios.post('https://kharid-karo-backend.vercel.app/admin/addproduct', formData);
                 alert('Product added successfully');
             
             setFormData({ name: '', price:'',category:'',quantity:1, description: '', image: '' });
